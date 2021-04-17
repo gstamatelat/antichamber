@@ -50,8 +50,8 @@ with open("data/quotes", 'r') as quotes_file:
 
 # Create the grid tex code
 grid_tex = "\\documentclass[border={{{side_margin}cm {top_margin}cm {side_margin}cm {top_margin}cm}}]{{standalone}}\n\\usepackage{{tikz}}\n\\usepackage{{adjustbox}}\n\\begin{{document}}\n\\begin{{tikzpicture}}\n".format(
-    top_margin=settings.args.vertical_margin,
-    side_margin=settings.args.horizontal_margin
+    top_margin=settings.args.page_vertical_margin,
+    side_margin=settings.args.page_horizontal_margin
 )
 for i in range(0, 15):
     for j in range(0, 8):

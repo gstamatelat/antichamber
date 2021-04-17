@@ -14,8 +14,8 @@ parser.add_argument('--horizontal-gap', type=float, help='horizontal margin betw
 parser.add_argument('--top-gap', type=float, help='vertical gap between the sign and its respective quote', default=0)
 parser.add_argument('--bottom-gap', type=float, help='vertical gap between the sign and the quote of the top sign',
                     default=0)
-parser.add_argument('--vertical-margin', type=float, help='top and bottom page margins', default=0)
-parser.add_argument('--horizontal-margin', type=float, help='left side and right side page margins', default=0)
+parser.add_argument('--page-vertical-margin', type=float, help='top and bottom page margins', default=0)
+parser.add_argument('--page-horizontal-margin', type=float, help='left side and right side page margins', default=0)
 parser.add_argument('--preview',
                     help='perform a preview only (without executing the quote optimization algorithm)', default=False,
                     action='store_true')
