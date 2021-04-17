@@ -59,14 +59,16 @@ for i in range(0, 15):
         y_img = -j * (
                 settings.args.image_size + settings.args.quote_height + settings.args.top_gap + settings.args.bottom_gap)
         y_quote = y_img - settings.args.image_size / 2 - settings.args.quote_height / 2 - settings.args.top_gap
-        grid_tex += "\\node at ({x},{y}) {{\\adjustimage{{width={img_size}cm,height={img_size}cm,keepaspectratio,valign=m}}{{{current_path}/tmp/img_potrace/{i}.pdf}}}};\n".format(
+        grid_tex += "\\node at ({x},{y}) {{\\adjustimage{{width={img_size}cm,height={img_size}cm,keepaspectratio,valign=m}}{{{current_path}/{out}/img_potrace/{i}.pdf}}}};\n".format(
+            out=OUTPUT,
             current_path=os.getcwd().replace("\\", "/"),
             x=x,
             y=y_img,
             img_size=settings.args.image_size,
             i=15 * j + i + 1
         )
-        grid_tex += "\\node at ({x},{y}) {{\\adjustimage{{width={img_size}cm,height={quote_height}cm,keepaspectratio,valign=m}}{{{current_path}/tmp/quote_pdf/{i}.pdf}}}};\n".format(
+        grid_tex += "\\node at ({x},{y}) {{\\adjustimage{{width={img_size}cm,height={quote_height}cm,keepaspectratio,valign=m}}{{{current_path}/{out}/quote_pdf/{i}.pdf}}}};\n".format(
+            out=OUTPUT,
             current_path=os.getcwd().replace("\\", "/"),
             x=x,
             y=y_quote,
