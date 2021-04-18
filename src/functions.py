@@ -73,7 +73,8 @@ def text_size(text):
 
 def quote_pdf_best(quote, output_pdf, ratio):
     best_fit_map = {}
-    for k in range(1, 4):
+    k = 1
+    while True:
         error_map = {}
         for partition in enumerate_text_partitions(quote, k):
             sizes = [text_size(line)[0] for line in partition.split("\\\\")]
@@ -83,6 +84,10 @@ def quote_pdf_best(quote, output_pdf, ratio):
         min_text_size = text_size(min_key)
         font_scale = min(ratio / min_text_size[0], 1 / min_text_size[1])
         best_fit_map[min_key] = font_scale
+        if min_text_size[0] / min_text_size[1] < ratio:
+            break
+        else:
+            k += 1
     best_fit = max(best_fit_map.keys(), key=lambda x: best_fit_map[x])
     return quote_pdf(best_fit, output_pdf)
 
