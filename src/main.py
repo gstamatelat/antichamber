@@ -1,6 +1,5 @@
 import os
 import pathlib
-import shutil
 
 import functions
 import settings
@@ -20,7 +19,6 @@ if os.path.exists(OUTPUT):
     exit()
 
 # Create directories
-shutil.rmtree(OUTPUT, ignore_errors=True)
 os.makedirs("{}/img_bmp".format(OUTPUT))
 os.makedirs("{}/img_potrace".format(OUTPUT))
 os.makedirs("{}/quote_pdf".format(OUTPUT))
