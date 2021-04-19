@@ -11,7 +11,8 @@ parser.add_argument('--pdfinfo', type=str, help='location of the pdfinfo executa
 parser.add_argument('--image-size', type=float, help='size in cm of each sign', default=1)
 parser.add_argument('--quote-ratio', type=float, help='width to height ratio of each quote', default=3.75)
 parser.add_argument('--horizontal-gap', type=float, help='horizontal margin between the images in cm', default=1 / 4)
-parser.add_argument('--top-gap', type=float, help='vertical gap between the sign and its respective quote', default=0)
+parser.add_argument('--top-gap', type=float, help='vertical gap between the sign and its respective quote',
+                    default=1 / 16)
 parser.add_argument('--bottom-gap', type=float, help='vertical gap between the sign and the quote of the top sign',
                     default=1 / 4)
 parser.add_argument('--page-vertical-margin', type=float, help='top and bottom page margins', default=1 / 8)
