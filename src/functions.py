@@ -54,7 +54,7 @@ def quote_pdf(quote, font, output_pdf):
     import os
     with open("data/quote.tex", 'r') as tex_file:
         tex_string = tex_file.read()
-    i_tex_string = tex_string.format(quote=quote, font_path=os.getcwd().replace("\\", "/")+"/data/font/", font=font)
+    i_tex_string = tex_string.format(quote=quote, font_path=os.getcwd().replace("\\", "/") + "/data/font/", font=font)
     return xelatex(i_tex_string, output_pdf)
 
 
@@ -101,8 +101,6 @@ def pdf_size(pdf_path):
     pdfsize = pdfsize[0]
     pdfsize = pdfsize[len("Page size:"):].strip()
     pdfsize = pdfsize[:-len("pts")].strip()
-    # pdfsize = pdfsize.removeprefix("Page size:").strip()
-    # pdfsize = pdfsize.removesuffix("pts").strip()
     pdfsize = pdfsize.split("x")
     return float(pdfsize[0].strip()), float(pdfsize[1].strip())
 

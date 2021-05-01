@@ -7,7 +7,7 @@ import settings
 # Constants
 IMAGES = 120  # How many images there are
 OUTPUT = "out"  # Output directory
-FONT = "marshmallow" # Font
+FONT = "marshmallow"  # Font
 
 # Change working directory
 current_path = pathlib.Path(__file__).parent.absolute()
