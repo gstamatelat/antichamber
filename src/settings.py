@@ -8,6 +8,7 @@ parser.add_argument('--potrace', type=str, help='location of the potrace executa
 parser.add_argument('--pdflatex', type=str, help='location of the pdflatex executable', default='pdflatex')
 parser.add_argument('--xelatex', type=str, help='location of the xelatex executable', default='xelatex')
 parser.add_argument('--pdfinfo', type=str, help='location of the pdfinfo executable', default='pdfinfo')
+parser.add_argument('--font', type=str, help='name of the font for the quotes', default='marshmallow')
 parser.add_argument('--image-size', type=float, help='size in cm of each sign', default=1)
 parser.add_argument('--quote-ratio', type=float, help='width to height ratio of each quote', default=3.75)
 parser.add_argument('--horizontal-gap', type=float, help='horizontal margin between the images in cm', default=1 / 4)
