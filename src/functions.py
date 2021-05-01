@@ -50,38 +50,38 @@ def pdflatex(code, output_file):
     return latex(settings.args.pdflatex, code, output_file)
 
 
-def quote_pdf(quote, output_pdf):
+def quote_pdf(quote, font, output_pdf):
     with open("data/quote.tex", 'r') as tex_file:
         tex_string = tex_file.read()
-    i_tex_string = tex_string.format(quote=quote)
+    i_tex_string = tex_string.format(quote=quote, font=font)
     return xelatex(i_tex_string, output_pdf)
 
 
-def text_size(text):
+def text_size(text, font):
     import os
     import tempfile
     if text in text_size_cache:
         return text_size_cache[text]
     tmp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf")
     tmp_file.close()
-    quote_pdf(text, tmp_file.name)
+    quote_pdf(text, font, tmp_file.name)
     size = pdf_size(tmp_file.name)
     os.remove(tmp_file.name)
     text_size_cache[text] = size
     return size
 
 
-def quote_pdf_best(quote, output_pdf, ratio):
+def quote_pdf_best(quote, font, output_pdf, ratio):
     best_fit_map = {}
     k = 1
     while True:
         error_map = {}
         for partition in enumerate_text_partitions(quote, k):
-            sizes = [text_size(line)[0] for line in partition.split("\\\\")]
+            sizes = [text_size(line, font)[0] for line in partition.split("\\\\")]
             error = sum((max(sizes) - size) ** 2 for size in sizes)
             error_map[partition] = error
         min_key = min(error_map.keys(), key=lambda x: error_map[x])
-        min_text_size = text_size(min_key)
+        min_text_size = text_size(min_key, font)
         font_scale = min(ratio / min_text_size[0], 1 / min_text_size[1])
         best_fit_map[min_key] = font_scale
         if min_text_size[0] / min_text_size[1] < ratio:
@@ -89,7 +89,7 @@ def quote_pdf_best(quote, output_pdf, ratio):
         else:
             k += 1
     best_fit = max(best_fit_map.keys(), key=lambda x: best_fit_map[x])
-    return quote_pdf(best_fit, output_pdf)
+    return quote_pdf(best_fit, font, output_pdf)
 
 
 def pdf_size(pdf_path):

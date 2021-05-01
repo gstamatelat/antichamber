@@ -40,9 +40,9 @@ with open("data/quotes", 'r') as quotes_file:
     for quote in quotes_file:
         print("Creating quote {}".format(line_no))
         if settings.args.preview:
-            functions.quote_pdf(quote, "{out}/quote_pdf/{i}.pdf".format(out=OUTPUT, i=line_no))
+            functions.quote_pdf(quote, "{current_path}/data/font/marshmallow.otf".format(current_path=os.getcwd().replace("\\", "/")), "{out}/quote_pdf/{i}.pdf".format(out=OUTPUT, i=line_no))
         else:
-            functions.quote_pdf_best(quote, "{out}/quote_pdf/{i}.pdf".format(out=OUTPUT, i=line_no),
+            functions.quote_pdf_best(quote, "{current_path}/data/font/marshmallow.otf".format(current_path=os.getcwd().replace("\\", "/")), "{out}/quote_pdf/{i}.pdf".format(out=OUTPUT, i=line_no),
                                      settings.args.quote_ratio)
         line_no += 1
 
