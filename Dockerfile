@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine
 
 RUN apk update
 RUN apk upgrade
@@ -11,4 +11,4 @@ RUN apk add poppler-utils
 
 COPY . /root/antichamber/
 
-CMD cd /root/antichamber/ && ash
+ENTRYPOINT cd /root/antichamber/ && ash
