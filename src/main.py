@@ -7,6 +7,7 @@ import settings
 # Constants
 IMAGES = 120  # How many images there are
 OUTPUT = "out"  # Output directory
+FONT = "marshmallow" # Font
 
 # Change working directory
 current_path = pathlib.Path(__file__).parent.absolute()
@@ -40,9 +41,9 @@ with open("data/quotes", 'r') as quotes_file:
     for quote in quotes_file:
         print("Creating quote {}".format(line_no))
         if settings.args.preview:
-            functions.quote_pdf(quote, "{current_path}/data/font/marshmallow.otf".format(current_path=os.getcwd().replace("\\", "/")), "{out}/quote_pdf/{i}.pdf".format(out=OUTPUT, i=line_no))
+            functions.quote_pdf(quote, FONT, "{out}/quote_pdf/{i}.pdf".format(out=OUTPUT, i=line_no))
         else:
-            functions.quote_pdf_best(quote, "{current_path}/data/font/marshmallow.otf".format(current_path=os.getcwd().replace("\\", "/")), "{out}/quote_pdf/{i}.pdf".format(out=OUTPUT, i=line_no),
+            functions.quote_pdf_best(quote, FONT, "{out}/quote_pdf/{i}.pdf".format(out=OUTPUT, i=line_no),
                                      settings.args.quote_ratio)
         line_no += 1
 
